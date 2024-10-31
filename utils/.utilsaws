@@ -1,4 +1,4 @@
-export AWS_DEFAULT_PROFILE=""
+export AWS_DEFAULT_PROFILE="local"
 export AWS_SDK_LOAD_CONFIG=true
 
 aws-use() {

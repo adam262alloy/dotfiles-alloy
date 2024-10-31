@@ -15,6 +15,7 @@ This target will create symlinks to the below config files:
 * `$HOME/.gitignore            -> .dotfiles/.gitignore`
 * `$HOME/.tool-versions        -> .dotfiles/.tool-versions`
 * `$HOME/.zshrc                -> .dotfiles/.zshrc`
+* `$HOME/.zshrc                -> .dotfiles/.zprofile`
 * `$HOME/.config/starship.toml -> .dotfiles/starship.toml`
 
 Note that the target will overwrite any existing files or symlinks in the listed directory.

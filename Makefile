@@ -17,6 +17,7 @@ symlink:
 	@ln -sfv "${DOTFILES_DIR}/.gitignore" ~
 	@ln -sfv "${DOTFILES_DIR}/.tool-versions" ~
 	@ln -sfv "${DOTFILES_DIR}/.zshrc" ~
+	@ln -sfv "${DOTFILES_DIR}/.zprofile" ~
 	@mkdir -p ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/.zfunc/poetry" ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/starship.toml" ~/.config/starship.toml

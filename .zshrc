@@ -58,7 +58,6 @@ export PATH="$PATH:$HOME/bin"
 export PATH=/usr/local/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.dajoku-cli/bin"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
@@ -86,16 +85,16 @@ function ngrok-localhost {
 }
 
 eval "$(jump shell)"
-eval "$(kubectl completion zsh)"
+# eval "$(kubectl completion zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 . <(stern --completion=zsh)
-. "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/asdf.sh"
 fpath=($HOME/.asdf/completions $fpath)
-. "$(pack completion --shell zsh)"
+# . "$(pack completion --shell zsh)"
 fpath=($fpath ~/.zsh/completion)
 
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+# export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 function source-zsh {
   local source_gh
