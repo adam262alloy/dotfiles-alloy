@@ -12,15 +12,18 @@ symlink:
 	@echo "\nSymlinking dotfiles to HOME and/or HOME/.config directories."
 
 	@ln -sfv "${DOTFILES_DIR}/.asdfrc" ~
+	@ln -sfv "${DOTFILES_DIR}/.aws/config" ~/.aws/config
 	@ln -sfv "${DOTFILES_DIR}/.editorconfig" ~
 	@ln -sfv "${DOTFILES_DIR}/.gitconfig" ~
 	@ln -sfv "${DOTFILES_DIR}/.gitignore" ~
+	@ln -sfv "${DOTFILES_DIR}/.terraformrc" ~
 	@ln -sfv "${DOTFILES_DIR}/.tool-versions" ~
-	@ln -sfv "${DOTFILES_DIR}/.zshrc" ~
 	@ln -sfv "${DOTFILES_DIR}/.zprofile" ~
+	@ln -sfv "${DOTFILES_DIR}/.zshrc" ~
 	@mkdir -p ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/.zfunc/poetry" ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/starship.toml" ~/.config/starship.toml
+	
 
 brew_install:
 	@echo "Installing brew packages"

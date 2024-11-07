@@ -1,4 +1,16 @@
 alias tf='terraform'
-alias tfi='terraform init -upgrade -backend-config=state.conf'
-alias tf-dangerous-a='terraform apply plan.bin && rm -f plan.bin'
-alias tfp='rm -f plan.bin && terraform plan -out=plan.bin | tee plan.txt'
+alias tfi='terraform init -upgrade'
+alias tfp='terraform plan -out=plan.out | tee plan.txt'
+
+mkdir -p $HOME/.terraform.d/plugin-cache
+
+# Run tfswitch automatically if 'main.tf' file is present
+load-tfswitch() {
+  local terraform_versionfile_path="main.tf"
+  if [ -f "$terraform_versionfile_path" ]; then
+    tfswitch
+  fi
+}
+add-zsh-hook chpwd load-tfswitch
+load-tfswitch
+                

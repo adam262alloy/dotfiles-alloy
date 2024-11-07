@@ -1,6 +1,6 @@
 ### Overview
 
-Dotfiles for provisioning my coding environment on MacOS
+Dotfiles for provisioning my Alloy coding environment in MacOS
 
 ### Setup
 
@@ -8,15 +8,7 @@ Dotfiles for provisioning my coding environment on MacOS
 
 #### make symlink
 
-This target will create symlinks to the below config files:
-
-* `$HOME/.editorconfig         -> .dotfiles/.editorconfig`
-* `$HOME/.gitconfig            -> .dotfiles/.gitconfig`
-* `$HOME/.gitignore            -> .dotfiles/.gitignore`
-* `$HOME/.tool-versions        -> .dotfiles/.tool-versions`
-* `$HOME/.zshrc                -> .dotfiles/.zshrc`
-* `$HOME/.zshrc                -> .dotfiles/.zprofile`
-* `$HOME/.config/starship.toml -> .dotfiles/starship.toml`
+This target will create symlinks to several config files such as `.gitconfig`, `.zshrc` and `.zprofile`
 
 Note that the target will overwrite any existing files or symlinks in the listed directory.
 
