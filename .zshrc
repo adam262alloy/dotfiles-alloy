@@ -85,11 +85,11 @@ function ngrok-localhost {
 }
 
 eval "$(jump shell)"
-# eval "$(kubectl completion zsh)"
+eval "$(kubectl completion zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 . <(stern --completion=zsh)
-# . "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/asdf.sh"
 fpath=($HOME/.asdf/completions $fpath)
 # . "$(pack completion --shell zsh)"
 fpath=($fpath ~/.zsh/completion)
