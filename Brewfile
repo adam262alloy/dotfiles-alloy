@@ -17,6 +17,7 @@ brew "gnu-sed"
 brew "gnupg"
 brew "jsonnet-bundler"
 brew "jump"
+brew "derailed/k9s/k9s"
 brew "libpq"
 brew "mas"
 brew "md5sha1sum"
@@ -36,14 +37,12 @@ brew "yj"
 brew "watch"
 brew "raggi/ale/openssl-osx-ca"
 
-# Alloy
 brew "warrensbox/tap/tfswitch"
 brew "pre-commit"
 brew "terraform-docs"
 brew "tflint"
 brew "minamijoyo/tfupdate/tfupdate"
 brew "jq"
-
 
 cask "flycut" unless system "find -f '/Applications/Flycut.app' > /dev/null"
 cask "font-agave-nerd-font"

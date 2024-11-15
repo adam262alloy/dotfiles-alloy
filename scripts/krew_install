@@ -8,5 +8,5 @@ if which kubectl > /dev/null 2>&1 && which krew > /dev/null 2>&1; then
     echo "Installing krew plugins"
     DEBUG=${DEBUG} kubectl krew install < "$(pwd)/krew-plugins.txt"
 else
-    echo "Missing kubectl and/or krew -- please run `make asdf_install`"
+    echo "Missing kubectl and/or krew -- please run make asdf_install"
 fi

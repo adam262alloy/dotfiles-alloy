@@ -69,10 +69,10 @@ export ASDF_HASHICORP_OVERWRITE_ARCH=amd64
 export ASDF_KUBECTL_OVERWRITE_ARCH=amd64
 
 export EDITOR='code -w'
-export BUNDLER_EDITOR='code -w'
-export KUBE_EDITOR='subl -w'
+export KUBE_EDITOR='code -w'
 
 export RACK_TIMEOUT=120
+export TERM=xterm-256color
 export UNICORN_TIMEOUT=1000
 
 alias source_zsh='source ~/.zshrc'
@@ -91,10 +91,7 @@ eval "$(direnv hook zsh)"
 . <(stern --completion=zsh)
 . "$HOME/.asdf/asdf.sh"
 fpath=($HOME/.asdf/completions $fpath)
-# . "$(pack completion --shell zsh)"
 fpath=($fpath ~/.zsh/completion)
-
-# export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 function source-zsh {
   local source_gh
