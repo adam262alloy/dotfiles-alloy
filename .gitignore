@@ -1,5 +1,4 @@
 .aws/
-.secretsrc
 .envrc
 .vscode/
 scratch.txt

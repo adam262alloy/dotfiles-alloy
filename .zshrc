@@ -1,8 +1,6 @@
 export DOTFILES_DIR="$HOME/.dotfiles"
 export ASDF_DIR="$HOME/.asdf"
 
-test -e "$DOTFILES_DIR/.secretsrc" && source "$DOTFILES_DIR/.secretsrc"
-
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh"  && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
 for util in $(ls -a "$DOTFILES_DIR/utils"); do
