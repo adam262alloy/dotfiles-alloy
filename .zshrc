@@ -90,6 +90,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 . <(stern --completion=zsh)
 . "$HOME/.asdf/asdf.sh"
+. "$HOME/.config/op/plugins.sh"
 fpath=($HOME/.asdf/completions $fpath)
 fpath=($fpath ~/.zsh/completion)
 

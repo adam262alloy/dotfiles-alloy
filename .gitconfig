@@ -1,6 +1,7 @@
 [alias]
 	ap = !git add -N . && git add -p
 	br = branch
+	ca = commit --amend
 	caa = commit --amend --allow-empty --no-edit
 	capf = !git commit --amend && git push -f	
 	co = checkout

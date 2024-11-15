@@ -44,6 +44,7 @@ brew "tflint"
 brew "minamijoyo/tfupdate/tfupdate"
 brew "jq"
 
+cask "1password-cli"
 cask "flycut" unless system "find -f '/Applications/Flycut.app' > /dev/null"
 cask "font-agave-nerd-font"
 cask "ngrok"
