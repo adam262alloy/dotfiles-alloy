@@ -43,3 +43,5 @@
 [user]
 	name = Adam Barcan
 	email = adam.barcan@alloy.com
+[credential]
+	helper = osxkeychain
