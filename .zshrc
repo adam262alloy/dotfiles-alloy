@@ -1,4 +1,5 @@
 export DOTFILES_DIR="$HOME/.dotfiles"
+export TERRAFORM_DIR="$HOME/Code/terraform"
 export ASDF_DIR="$HOME/.asdf"
 
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh"  && source "$HOME/.autojump/etc/profile.d/autojump.sh"

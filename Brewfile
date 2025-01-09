@@ -37,6 +37,8 @@ brew "yarn"
 brew "yj"
 brew "watch"
 brew "raggi/ale/openssl-osx-ca"
+brew "pinentry-mac"
+brew "docker-credential-helper-ecr"
 
 brew "warrensbox/tap/tfswitch"
 brew "pre-commit"

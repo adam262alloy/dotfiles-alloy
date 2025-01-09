@@ -30,13 +30,7 @@ ssl-cert-inspect () {
 }
 
 prune-tf () {
-    local terraform_repo="$1"
-
-    echo "Purging all '.terraform.lock.hcl' files from $terraform_repo"
-    for lock in $(find "$terraform_repo" -name '.terraform.lock.hcl')
-    do
-            rm $lock
-    done
+    local terraform_repo="${1:-${TERRAFORM_DIR}}"
     
     echo "Purging all '.terraform' directories from $terraform_repo"
     for dir in $(find "$terraform_repo" -type d -name '.terraform')

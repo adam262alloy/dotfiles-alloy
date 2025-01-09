@@ -1,6 +1,6 @@
 .aws/
 .envrc
 .vscode/
-scratch.txt
 scratch/
+scratch.txt
 data/
