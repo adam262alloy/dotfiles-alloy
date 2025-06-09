@@ -1,4 +1,6 @@
+ai
 ctx
 modify-secret
 ns
+resource-capacity
 view-secret

@@ -1,9 +1,9 @@
-#compdef k9s
-compdef _k9s k9s
+#compdef argo
+compdef _argo argo
 
-# zsh completion for k9s                                  -*- shell-script -*-
+# zsh completion for argo                                 -*- shell-script -*-
 
-__k9s_debug()
+__argo_debug()
 {
     local file="$BASH_COMP_DEBUG_FILE"
     if [[ -n ${file} ]]; then
@@ -11,7 +11,7 @@ __k9s_debug()
     fi
 }
 
-_k9s()
+_argo()
 {
     local shellCompDirectiveError=1
     local shellCompDirectiveNoSpace=2
@@ -23,21 +23,21 @@ _k9s()
     local lastParam lastChar flagPrefix requestComp out directive comp lastComp noSpace keepOrder
     local -a completions
 
-    __k9s_debug "\n========= starting completion logic =========="
-    __k9s_debug "CURRENT: ${CURRENT}, words[*]: ${words[*]}"
+    __argo_debug "\n========= starting completion logic =========="
+    __argo_debug "CURRENT: ${CURRENT}, words[*]: ${words[*]}"
 
     # The user could have moved the cursor backwards on the command-line.
     # We need to trigger completion from the $CURRENT location, so we need
     # to truncate the command-line ($words) up to the $CURRENT location.
     # (We cannot use $CURSOR as its value does not work when a command is an alias.)
     words=("${=words[1,CURRENT]}")
-    __k9s_debug "Truncated words[*]: ${words[*]},"
+    __argo_debug "Truncated words[*]: ${words[*]},"
 
     lastParam=${words[-1]}
     lastChar=${lastParam[-1]}
-    __k9s_debug "lastParam: ${lastParam}, lastChar: ${lastChar}"
+    __argo_debug "lastParam: ${lastParam}, lastChar: ${lastChar}"
 
-    # For zsh, when completing a flag with an = (e.g., k9s -n=<TAB>)
+    # For zsh, when completing a flag with an = (e.g., argo -n=<TAB>)
     # completions must be prefixed with the flag
     setopt local_options BASH_REMATCH
     if [[ "${lastParam}" =~ '-.*=' ]]; then
@@ -50,22 +50,22 @@ _k9s()
     if [ "${lastChar}" = "" ]; then
         # If the last parameter is complete (there is a space following it)
         # We add an extra empty parameter so we can indicate this to the go completion code.
-        __k9s_debug "Adding extra empty parameter"
+        __argo_debug "Adding extra empty parameter"
         requestComp="${requestComp} \"\""
     fi
 
-    __k9s_debug "About to call: eval ${requestComp}"
+    __argo_debug "About to call: eval ${requestComp}"
 
     # Use eval to handle any environment variables and such
     out=$(eval ${requestComp} 2>/dev/null)
-    __k9s_debug "completion output: ${out}"
+    __argo_debug "completion output: ${out}"
 
     # Extract the directive integer following a : from the last line
     local lastLine
     while IFS='\n' read -r line; do
         lastLine=${line}
     done < <(printf "%s\n" "${out[@]}")
-    __k9s_debug "last line: ${lastLine}"
+    __argo_debug "last line: ${lastLine}"
 
     if [ "${lastLine[1]}" = : ]; then
         directive=${lastLine[2,-1]}
@@ -75,16 +75,16 @@ _k9s()
         out=${out[1,-$suffix]}
     else
         # There is no directive specified.  Leave $out as is.
-        __k9s_debug "No directive found.  Setting do default"
+        __argo_debug "No directive found.  Setting do default"
         directive=0
     fi
 
-    __k9s_debug "directive: ${directive}"
-    __k9s_debug "completions: ${out}"
-    __k9s_debug "flagPrefix: ${flagPrefix}"
+    __argo_debug "directive: ${directive}"
+    __argo_debug "completions: ${out}"
+    __argo_debug "flagPrefix: ${flagPrefix}"
 
     if [ $((directive & shellCompDirectiveError)) -ne 0 ]; then
-        __k9s_debug "Completion received error. Ignoring completions."
+        __argo_debug "Completion received error. Ignoring completions."
         return
     fi
 
@@ -95,11 +95,11 @@ _k9s()
     while IFS='\n' read -r comp; do
         # Check if this is an activeHelp statement (i.e., prefixed with $activeHelpMarker)
         if [ "${comp[1,$endIndex]}" = "$activeHelpMarker" ];then
-            __k9s_debug "ActiveHelp found: $comp"
+            __argo_debug "ActiveHelp found: $comp"
             comp="${comp[$startIndex,-1]}"
             if [ -n "$comp" ]; then
                 compadd -x "${comp}"
-                __k9s_debug "ActiveHelp will need delimiter"
+                __argo_debug "ActiveHelp will need delimiter"
                 hasActiveHelp=1
             fi
 
@@ -116,7 +116,7 @@ _k9s()
             local tab="$(printf '\t')"
             comp=${comp//$tab/:}
 
-            __k9s_debug "Adding completion: ${comp}"
+            __argo_debug "Adding completion: ${comp}"
             completions+=${comp}
             lastComp=$comp
         fi
@@ -127,19 +127,19 @@ _k9s()
     # - file completion will be performed (so there will be choices after the activeHelp)
     if [ $hasActiveHelp -eq 1 ]; then
         if [ ${#completions} -ne 0 ] || [ $((directive & shellCompDirectiveNoFileComp)) -eq 0 ]; then
-            __k9s_debug "Adding activeHelp delimiter"
+            __argo_debug "Adding activeHelp delimiter"
             compadd -x "--"
             hasActiveHelp=0
         fi
     fi
 
     if [ $((directive & shellCompDirectiveNoSpace)) -ne 0 ]; then
-        __k9s_debug "Activating nospace."
+        __argo_debug "Activating nospace."
         noSpace="-S ''"
     fi
 
     if [ $((directive & shellCompDirectiveKeepOrder)) -ne 0 ]; then
-        __k9s_debug "Activating keep order."
+        __argo_debug "Activating keep order."
         keepOrder="-V"
     fi
 
@@ -156,17 +156,17 @@ _k9s()
         done
         filteringCmd+=" ${flagPrefix}"
 
-        __k9s_debug "File filtering command: $filteringCmd"
+        __argo_debug "File filtering command: $filteringCmd"
         _arguments '*:filename:'"$filteringCmd"
     elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
         # File completion for directories only
         local subdir
         subdir="${completions[1]}"
         if [ -n "$subdir" ]; then
-            __k9s_debug "Listing directories in $subdir"
+            __argo_debug "Listing directories in $subdir"
             pushd "${subdir}" >/dev/null 2>&1
         else
-            __k9s_debug "Listing directories in ."
+            __argo_debug "Listing directories in ."
         fi
 
         local result
@@ -177,17 +177,17 @@ _k9s()
         fi
         return $result
     else
-        __k9s_debug "Calling _describe"
+        __argo_debug "Calling _describe"
         if eval _describe $keepOrder "completions" completions $flagPrefix $noSpace; then
-            __k9s_debug "_describe found some completions"
+            __argo_debug "_describe found some completions"
 
             # Return the success of having called _describe
             return 0
         else
-            __k9s_debug "_describe did not find completions."
-            __k9s_debug "Checking if we should do file completion."
+            __argo_debug "_describe did not find completions."
+            __argo_debug "Checking if we should do file completion."
             if [ $((directive & shellCompDirectiveNoFileComp)) -ne 0 ]; then
-                __k9s_debug "deactivating file completion"
+                __argo_debug "deactivating file completion"
 
                 # We must return an error code here to let zsh know that there were no
                 # completions found by _describe; this is what will trigger other
@@ -196,7 +196,7 @@ _k9s()
                 return 1
             else
                 # Perform file completion
-                __k9s_debug "Activating file completion"
+                __argo_debug "Activating file completion"
 
                 # We must return the result of this command, so it must be the
                 # last command, or else we must store its result to return it.
@@ -207,6 +207,6 @@ _k9s()
 }
 
 # don't run the completion function when being source-ed or eval-ed
-if [ "$funcstack[1]" = "_k9s" ]; then
-    _k9s
+if [ "$funcstack[1]" = "_argo" ]; then
+    _argo
 fi

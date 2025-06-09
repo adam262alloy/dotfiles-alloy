@@ -54,7 +54,7 @@ EOBUNDLES
 
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 export PATH="$PATH:$HOME/bin"
-export PATH=/usr/local/bin:$PATH
+export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -63,9 +63,18 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export ASDF_HASHICORP_OVERWRITE_ARCH=amd64
 export ASDF_KUBECTL_OVERWRITE_ARCH=amd64
+export ASDF_DATA_DIR="$HOME/.asdf"
+mkdir -p "$ASDF_DATA_DIR/completions"
+asdf completion zsh > "$ASDF_DATA_DIR/completions/_asdf"
+
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
 export EDITOR='code -w'
 export KUBE_EDITOR='code -w'
@@ -77,6 +86,7 @@ export UNICORN_TIMEOUT=1000
 alias source_zsh='source ~/.zshrc'
 
 alias la='ls -a'
+alias a=argo
 alias pboard_reset="ps aux | grep pboard | grep -v grep | awk '{ print $2 }' | xargs kill"
 
 function ngrok-localhost {
@@ -88,10 +98,8 @@ eval "$(kubectl completion zsh)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 . <(stern --completion=zsh)
-. "$HOME/.asdf/asdf.sh"
 . "$HOME/.config/op/plugins.sh"
-fpath=($HOME/.asdf/completions $fpath)
-fpath=($fpath ~/.zsh/completion)
+. $DOTFILES_DIR/argo-completion.sh
 
 function source-zsh {
   local source_gh
@@ -102,4 +110,4 @@ function source-zsh {
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+export GPG_TTY=$(tty)

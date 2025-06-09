@@ -4,6 +4,10 @@ alias tfp='terraform plan -out=plan.out | tee plan.txt'
 
 mkdir -p $HOME/.terraform.d/plugin-cache
 
+tf-workspace() {
+  tf workspace select $(tf workspace list | fzf)
+}
+
 # Run tfswitch automatically if 'main.tf' file is present
 load-tfswitch() {
   local terraform_versionfile_path="main.tf"

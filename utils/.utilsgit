@@ -5,17 +5,33 @@ function prune-git-branches () {
 }
 
 function git-pr-create() {
-  local branch branch_items card body_file
+  local body_file branch branch_items card jira_url path_to_pr_template 
+  jira_url="https://team-alloy.atlassian.net/browse"
+  path_to_pr_template="${1:-$TERRAFORM_DIR/.github}"
 
   branch=$(git branch --show-current)
   branch_items=($(echo $branch | tr "-" "\n"))
   card="${branch_items[1]}-${branch_items[2]}"
   body_file="/tmp/${card}-body.txt"
 
+  cat <(echo "${jira_url}/${card}\n\n") "${path_to_pr_template}/PULL_REQUEST_TEMPLATE.md" > "/tmp/${card}-body.txt"
+
+  # Always delete the tmp file even if `gh pr create` fails
+  trap "rm \"${body_file}\"" EXIT 
+  
   gh pr create -t "$branch" -F "${body_file}" "$@"
   gh pr view --web
+}
 
-  rm "${body_file}"
+function gh-release() {
+  local tag changelog
+
+  tag=$1
+  changelog="${2:-CHANGELOG.md}"
+
+  echo "Creating release for $tag ..."
+  gh release create "$tag" -F "$changelog" -t "$tag"
+  echo "Done" 
 }
 
 export GITHUB_TOKEN=$(gh auth token)
