@@ -3,4 +3,5 @@ ctx
 modify-secret
 ns
 resource-capacity
+stern
 view-secret
