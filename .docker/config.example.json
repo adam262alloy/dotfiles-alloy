@@ -1,0 +1,20 @@
+{
+	"auths": {},
+	"credsStore": "osxkeychain",
+	"credHelpers": {
+		"123456789.dkr.ecr.us-east-1.amazonaws.com": "ecr-login",
+		"public.ecr.aws": "ecr-login"
+	},
+	"currentContext": "desktop-linux",
+	"plugins": {
+		"debug": {
+			"hooks": "exec"
+		},
+		"scout": {
+			"hooks": "pull,buildx build"
+		}
+	},
+	"features": {
+		"hooks": "true"
+	}
+}

@@ -1,5 +1,5 @@
-.aws/
-.envrc
+.aws/config
+.docker/config.json
 .vscode/
 scratch/
 scratch.txt

@@ -13,6 +13,7 @@ symlink:
 
 	@ln -sfv "${DOTFILES_DIR}/.asdfrc" ~
 	@ln -sfv "${DOTFILES_DIR}/.aws/config" ~/.aws/config
+	@ln -sfv "${DOTFILES_DIR}/.docker/config.json" ~/.docker/config.json
 	@ln -sfv "${DOTFILES_DIR}/.editorconfig" ~
 	@ln -sfv "${DOTFILES_DIR}/.gitconfig" ~
 	@ln -sfv "${DOTFILES_DIR}/.gitignore" ~

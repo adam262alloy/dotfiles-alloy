@@ -110,4 +110,5 @@ function source-zsh {
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "./kind-completion.zsh" && source "./kind-completion.zsh"
 export GPG_TTY=$(tty)
