@@ -8,6 +8,10 @@ tf-workspace() {
   tf workspace select $(tf workspace list | fzf)
 }
 
+tfi-all() { 
+  for d in */*/; do (cd "$d" && terraform init -upgrade); done
+}
+
 # Run tfswitch automatically if 'main.tf' file is present
 load-tfswitch() {
   local terraform_versionfile_path="main.tf"

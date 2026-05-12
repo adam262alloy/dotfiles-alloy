@@ -5,6 +5,7 @@ eksctl latest
 golang 1.22.0
 gcloud 542.0.0
 helm 3.15.4
+istioctl 1.29.2
 kind 0.17.0
 krew 0.4.5
 kubectl 1.29.0

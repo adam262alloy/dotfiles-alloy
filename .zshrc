@@ -2,8 +2,13 @@ export DOTFILES_DIR="$HOME/.dotfiles"
 export TERRAFORM_DIR="$HOME/Code/terraform"
 export ASDF_DIR="$HOME/.asdf"
 
+export TFENV_ARCH=amd64
+export GODEBUG=asyncpreemptoff=1
+setopt NO_ERREXIT
+
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh"  && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
+autoload -U add-zsh-hook
 for util in $(ls -a "$DOTFILES_DIR/utils"); do
   source "$DOTFILES_DIR/utils/$util"
 done
@@ -34,9 +39,10 @@ fpath+=~/.zfunc
 autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 
+source ~/Code/ops/.claude/skills/create-jira-ticket/create-jira-ticket
+
 antidote bundle <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
   
   # Bundle OMZ plugins using annotations
@@ -65,6 +71,7 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+export PATH=$HOME/.istioctl/bin:$PATH
 
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export ASDF_HASHICORP_OVERWRITE_ARCH=amd64
@@ -112,3 +119,9 @@ function source-zsh {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "./kind-completion.zsh" && source "./kind-completion.zsh"
 export GPG_TTY=$(tty)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=''
+_zsh_autosuggest_highlight_apply() {
+  # No-op: Do nothing
+}
+setopt NO_ERREXIT
+

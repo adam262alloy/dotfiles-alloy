@@ -5,5 +5,5 @@ scratch/
 scratch.txt
 data/
 charts/
-!argocd/charts/
 teleskope-helm-chart/
+.helmignore
