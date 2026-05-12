@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function openssl_read_csr() {
+    local path_to_csr="$1"
+    openssl req -in path_to_csr.csr -text -noout
+}
+
+function openssl_gen_csr() {
+    local DOMAIN_COMMON_NAME="$1"
+    openssl req -newkey rsa:4096 -keyout ${DOMAIN_COMMON_NAME}_private.key -out ${DOMAIN_COMMON_NAME}.csr
+}
+
+function openssl_read_cert() {
+    local path_to_cert="$1"
+    openssl x509 -in ${path_to_cert} -text -noout
+}
+
+function openssl_read_private_key() {
+    local path_to_key="$1"
+    openssl rsa -in ${path_to_key} -text -noout
+}
