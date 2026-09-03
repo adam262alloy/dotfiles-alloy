@@ -19,19 +19,8 @@ function git-pr-create() {
   # Always delete the tmp file even if `gh pr create` fails
   trap "rm \"${body_file}\"" EXIT 
   
-  gh pr create -t "$branch" -F "${body_file}" "$@"
+  gh pr create -t "feat: $branch" -F "${body_file}" "$@"
   gh pr view --web
-}
-
-function gh-release() {
-  local tag changelog
-
-  tag=$1
-  changelog="${2:-CHANGELOG.md}"
-
-  echo "Creating release for $tag ..."
-  gh release create "$tag" -F "$changelog" -t "$tag"
-  echo "Done" 
 }
 
 export GITHUB_TOKEN=$(gh auth token)

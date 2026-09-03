@@ -1,0 +1,61 @@
+# #!/bin/bash
+# set -euo pipefail
+
+# function create-jira-ticket() {
+#     local summary="$1"
+#     local description="$2"
+#     local acceptance_criteria="$3"
+#     local change_impact="Not production"
+
+#     read "?Is change impact production?(y/n): " choice
+#     if [[ "$choice" =~ ^[yY]$ ]]; then
+#       change_impact="Production"
+#     fi
+#     echo "Selected change impact: $change_impact"
+
+#     jq -n \
+#   --arg project "INFR" \
+#   --arg summary "$summary" \
+#   --arg change_impact "$change_impact" \
+#   --arg desc "$description" \
+#   --arg acceptance_criteria "$acceptance_criteria" \
+#   --arg type "story" \
+#   '{
+#     fields: {
+#       project: { key: $project },
+#       summary: $summary,
+#       description: {
+#         type: "doc",
+#         version: 1,
+#         content: [
+#           {
+#             type: "paragraph",
+#             content: [
+#               { type: "text", text: $desc }
+#             ]
+#           }
+#         ]
+#       },
+#       customfield_11252: {
+#         type: "doc",
+#         version: 1,
+#         content: [
+#           {
+#             type: "paragraph",
+#             content: [
+#               { type: "text", text: $acceptance_criteria }
+#             ]
+#           }
+#         ]
+#       },
+#       customfield_11250: { value: $change_impact },
+#       issuetype: { name: $type }
+#     }
+#   }' \
+# | curl -sS \
+#   -X POST "https://team-alloy.atlassian.net/rest/api/3/issue" \
+#   -u "$(op read op://Employee/JiraAPIToken/username):$(op read op://Employee/JiraAPIToken/password)" \
+#   -H "Accept: application/json" \
+#   -H "Content-Type: application/json" \
+#   --data-binary @-
+# }

@@ -4,4 +4,5 @@ modify-secret
 ns
 resource-capacity
 stern
+tree
 view-secret

@@ -1,9 +1,13 @@
 .aws/config
 .docker/config.json
 .vscode/
+.claude
 scratch/
 scratch.txt
 data/
 charts/
 teleskope-helm-chart/
 .helmignore
+__pycache__/
+*.py[cod]
+*$py.class

@@ -3,12 +3,12 @@
 	br = branch
 	ca = commit --amend
 	caa = commit --amend --allow-empty --no-edit
-	capf = !git commit --amend && git push -f	
+	capf = !git commit --amend && git push --force-with-lease
 	co = checkout
 	cob = !git fetch origin main:main && git checkout -b
 	com = !git checkout main && git pull --rebase origin main
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	pf = !git push -f
+	pf = !git push --force-with-lease
 	rc = !git rebase --continue
 	ra = !git rebase --abort
 	rem = !git fetch origin main:main && git pull --rebase origin main

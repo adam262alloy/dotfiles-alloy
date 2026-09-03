@@ -4,6 +4,7 @@ export ASDF_DIR="$HOME/.asdf"
 
 export TFENV_ARCH=amd64
 export GODEBUG=asyncpreemptoff=1
+export ENABLE_LOCAL_TF_DOCS=1
 setopt NO_ERREXIT
 
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh"  && source "$HOME/.autojump/etc/profile.d/autojump.sh"
