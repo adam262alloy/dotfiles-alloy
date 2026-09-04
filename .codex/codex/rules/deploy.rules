@@ -1,0 +1,11 @@
+prefix_rule(
+    pattern = ["kubectl"],
+    decision = "prompt",
+    justification = "Kubernetes commands require explicit user approval.",
+)
+
+prefix_rule(
+    pattern = ["helm"],
+    decision = "prompt",
+    justification = "Helm commands require explicit user approval.",
+)

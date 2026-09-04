@@ -2,7 +2,7 @@ argo 3.6.7
 argocd 2.5.10
 awscli 2.36.4
 eksctl latest
-golang 1.22.0
+golang 1.26.0
 gcloud 542.0.0
 helm 3.17.0
 istioctl 1.30.3

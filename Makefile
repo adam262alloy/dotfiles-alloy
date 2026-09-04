@@ -13,6 +13,12 @@ symlink:
 
 	@ln -sfv "${DOTFILES_DIR}/.asdfrc" ~
 	@ln -sfv "${DOTFILES_DIR}/.aws/config" ~/.aws/config
+
+	mkdir -p ~/.codex/rules
+	@ln -sfv "${DOTFILES_DIR}/.codex/AGENTS.md" ~/.codex
+	@ln -sfv "${DOTFILES_DIR}/.codex/config.toml" ~/.codex
+	@ln -sfv "${DOTFILES_DIR}/.codex/rules/deploy.rules" ~/.codex/rules
+	
 	@ln -sfv "${DOTFILES_DIR}/.docker/config.json" ~/.docker/config.json
 	@ln -sfv "${DOTFILES_DIR}/.editorconfig" ~
 	@ln -sfv "${DOTFILES_DIR}/.gitconfig" ~
@@ -21,6 +27,7 @@ symlink:
 	@ln -sfv "${DOTFILES_DIR}/.tool-versions" ~
 	@ln -sfv "${DOTFILES_DIR}/.zprofile" ~
 	@ln -sfv "${DOTFILES_DIR}/.zshrc" ~
+
 	@mkdir -p ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/.zfunc/poetry" ~/.zfunc
 	@ln -sfv "${DOTFILES_DIR}/starship.toml" ~/.config/starship.toml

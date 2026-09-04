@@ -1,0 +1,9 @@
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+approvals_reviewer = "user"
+
+[sandbox_workspace_write]
+network_access = false
+
+[projects."/Users/adambarcan/Code/helm-charts"]
+trust_level = "trusted"
