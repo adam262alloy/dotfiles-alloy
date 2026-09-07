@@ -5,6 +5,8 @@ export ASDF_DIR="$HOME/.asdf"
 export TFENV_ARCH=amd64
 export GODEBUG=asyncpreemptoff=1
 export ENABLE_LOCAL_TF_DOCS=1
+export GOOS=darwin
+export GOARCH=arm64
 setopt NO_ERREXIT
 
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh"  && source "$HOME/.autojump/etc/profile.d/autojump.sh"
@@ -39,8 +41,6 @@ source <(antidote init)
 fpath+=~/.zfunc
 autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
-
-source ~/Code/ops/.claude/skills/create-jira-ticket/create-jira-ticket
 
 antidote bundle <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
