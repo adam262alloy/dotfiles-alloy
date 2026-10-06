@@ -1,0 +1,8 @@
+[projects."/Users/adambarcan/Code/helm-charts"]
+trust_level = "trusted"
+
+[projects."/Users/adambarcan/Code/terraform"]
+trust_level = "trusted"
+
+[projects."/Users/adambarcan/Code/argo-workflows"]
+trust_level = "trusted"
